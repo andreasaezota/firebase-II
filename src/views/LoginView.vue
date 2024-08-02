@@ -27,12 +27,13 @@
     </div>
 </template>
 <script>
-import FormLogin from '@/components/FormLogin.vue'
+// Importa el componente FormLogin
+import FormLogin from '@/components/FormLogin.vue' 
 
 export default {
-    name: 'LoginView',
+    name: 'LoginView', // Nombre del componente
     components: {
-        FormLogin
+        FormLogin  // Registra el componente FormLogin para usarlo en esta vista
     }
 }
 </script>

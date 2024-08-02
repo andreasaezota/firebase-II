@@ -1,10 +1,44 @@
 <template>
   <nav>
+        <!-- Enlace a la página-->
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/login">Login</router-link>|
+    <router-link to="/user">User</router-link>|
+    <router-link to="/singup">SingUp</router-link>|
+  <router-link to="/about">Login</router-link>
+    
+    
   </nav>
+    <!-- Componente que muestra la vista correspondiente según la ruta actual -->
   <router-view/>
 </template>
+
+<script>
+// Importa las funciones de autenticación necesarias desde el módulo de autenticación
+import {createUserWithEmailAndPassword, auth} from '@/auth';
+
+export default {
+  data () {
+    return {
+      email: '', // Propiedad para almacenar el correo electrónico del usuario
+      password: '' // Propiedad para almacenar la contraseña del usuario
+    };
+  },
+  methods: {
+        // Método para registrar un nuevo usuario
+    async register () {
+      try {
+        // Intenta crear una nueva cuenta de usuario con el correo y la contraseña proporcionados
+        const userCredential = await createUserWithEmailAndPassword ( auth, this.email, this.password);
+        const user = userCredential.user; // Obtiene el usuario registrado
+        console.console.log('Usuario registrado:', user); // Imprime los detalles del usuario en la consola
+      } catch (error) {
+        console.console.error('Error.massage'); // Imprime el mensaje de error en la consola si el registro falla
+      }
+    }
+  }
+};
+</script>
 
 <style>
 #app {
